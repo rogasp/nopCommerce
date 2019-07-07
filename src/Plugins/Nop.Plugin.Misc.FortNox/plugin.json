@@ -1,0 +1,11 @@
+{
+  "Group": "Misc",
+  "FriendlyName": "FortNox",
+  "SystemName": "Misc.FortNox",
+  "Version": "1.00",
+  "SupportedVersions": [ "4.30" ],
+  "Author": "Roger Aspelin",
+  "DisplayOrder": 1,
+  "FileName": "Nop.Plugin.Misc.FortNox.dll",
+  "Description": "This plugin allows to integrate with Fortnox service"
+}

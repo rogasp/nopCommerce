@@ -1,0 +1,11 @@
+﻿@model ConfigurationModel
+@using Ras.Plugin.Misc.Fortnox
+@using Ras.Plugin.Misc.Fortnox.Models
+
+@{
+    Layout = "_ConfigurePlugin";
+}
+
+@await Component.InvokeAsync("StoreScopeConfiguration")
+
+<form asp-controller="Fortnox" asp-action="Configure" method="post"></form>

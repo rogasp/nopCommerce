@@ -1,0 +1,11 @@
+{
+  "Group": "Misc",
+  "FriendlyName": "Fortnox",
+  "SystemName": "Misc.Fortnox",
+  "Version": "0.01",
+  "SupportedVersions": [ "4.30" ],
+  "Author": "Roger Aspelin",
+  "DisplayOrder": 1,
+  "FileName": "Ras.Plugin.Misc.Fortnox.dll",
+  "Description": "This plugin allows to integrate with Fortnox service"
+}
