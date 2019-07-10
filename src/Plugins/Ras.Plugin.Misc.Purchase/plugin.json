@@ -1,0 +1,11 @@
+﻿{
+  "Group": "Misc",
+  "FriendlyName": "RMS System to handle your stock and purchase",
+  "SystemName": "Misc.Purchase",
+  "Version": "1.00",
+  "SupportedVersions": [ "4.30" ],
+  "Author": "Roger Aspelin",
+  "DisplayOrder": 1,
+  "FileName": "Ras.Plugin.Misc.Purchase.dll",
+  "Description": "This plugin offers an RMS System to handle your stock and purchase"
+}

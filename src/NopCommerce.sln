@@ -63,6 +63,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nop.Plugin.Tax.Avalara", "P
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nop.Plugin.Misc.FortNox", "Plugins\Nop.Plugin.Misc.FortNox\Nop.Plugin.Misc.FortNox.csproj", "{0B527C88-4835-40BF-AA64-DC65F687C667}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ras.Plugin.Misc.Purchase", "Plugins\Ras.Plugin.Misc.Purchase\Ras.Plugin.Misc.Purchase.csproj", "{2C2A85A4-DE69-4203-AAEA-2C0347348268}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -353,6 +355,18 @@ Global
 		{0B527C88-4835-40BF-AA64-DC65F687C667}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{0B527C88-4835-40BF-AA64-DC65F687C667}.Release|x86.ActiveCfg = Release|Any CPU
 		{0B527C88-4835-40BF-AA64-DC65F687C667}.Release|x86.Build.0 = Release|Any CPU
+		{2C2A85A4-DE69-4203-AAEA-2C0347348268}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C2A85A4-DE69-4203-AAEA-2C0347348268}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C2A85A4-DE69-4203-AAEA-2C0347348268}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{2C2A85A4-DE69-4203-AAEA-2C0347348268}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{2C2A85A4-DE69-4203-AAEA-2C0347348268}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2C2A85A4-DE69-4203-AAEA-2C0347348268}.Debug|x86.Build.0 = Debug|Any CPU
+		{2C2A85A4-DE69-4203-AAEA-2C0347348268}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C2A85A4-DE69-4203-AAEA-2C0347348268}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C2A85A4-DE69-4203-AAEA-2C0347348268}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{2C2A85A4-DE69-4203-AAEA-2C0347348268}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{2C2A85A4-DE69-4203-AAEA-2C0347348268}.Release|x86.ActiveCfg = Release|Any CPU
+		{2C2A85A4-DE69-4203-AAEA-2C0347348268}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -384,6 +398,7 @@ Global
 		{7B08DACB-8E11-416D-9DDF-B0EEF847A8ED} = {7881B112-7843-4542-B1F7-F99553FB9BB7}
 		{2426B75D-23D4-41EF-8924-47650C8A18C7} = {7881B112-7843-4542-B1F7-F99553FB9BB7}
 		{0B527C88-4835-40BF-AA64-DC65F687C667} = {7881B112-7843-4542-B1F7-F99553FB9BB7}
+		{2C2A85A4-DE69-4203-AAEA-2C0347348268} = {7881B112-7843-4542-B1F7-F99553FB9BB7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EE72A8B2-332A-4175-9319-6726D36E9D25}

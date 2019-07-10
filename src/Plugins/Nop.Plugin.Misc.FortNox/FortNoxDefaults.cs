@@ -17,6 +17,26 @@ namespace Nop.Plugin.Misc.FortNox
         /// </summary>
         public static string HideGeneralBlock = "FortNoxPage.HideGeneralBlock";
 
-        
+        /// <summary>
+        /// Gets a name of the synchronization schedule task
+        /// </summary>
+        public static string SynchronizationTaskName => "Customer - Synchronization (FortNox plugin)";
+
+        /// <summary>
+        /// Gets a type of the synchronization schedule task
+        /// </summary>
+        public static string SynchronizationTask => "Nop.Plugin.Misc.FortNox.Services.SynchronizationTask";
+
+        /// <summary>
+        /// Gets a default synchronization period in hours
+        /// </summary>
+        public static int DefaultSynchronizationPeriod => 12;
+
+        /// <summary>
+        /// Gets a default synchronization limit of Lists
+        /// </summary>
+        public static int DefaultSynchronizationListsLimit => 50;
+
+
     }
 }

@@ -14,6 +14,8 @@ using Nop.Services.Stores;
 using Nop.Services.Tasks;
 using Nop.Web.Framework.Menu;
 using Nop.Web.Framework.Infrastructure;
+using Nop.Core.Domain.Tasks;
+using Nop.Plugin.Misc.FortNox.Data;
 
 namespace Nop.Plugin.Misc.FortNox
 {
@@ -30,6 +32,7 @@ namespace Nop.Plugin.Misc.FortNox
         private readonly IStoreService _storeService;
         private readonly IWebHelper _webHelper;
         private readonly WidgetSettings _widgetSettings;
+        private readonly FortNoxCustomerContext _objectContext;
 
         #endregion
 
@@ -43,7 +46,8 @@ namespace Nop.Plugin.Misc.FortNox
             ISettingService settingService,
             IStoreService storeService,
             IWebHelper webHelper,
-            WidgetSettings widgetSettings)
+            WidgetSettings widgetSettings,
+            FortNoxCustomerContext objectContext)
         {
             _emailAccountService = emailAccountService;
             _genericAttributeService = genericAttributeService;
@@ -54,6 +58,7 @@ namespace Nop.Plugin.Misc.FortNox
             _storeService = storeService;
             _webHelper = webHelper;
             _widgetSettings = widgetSettings;
+            _objectContext = objectContext;
         }
 
         #endregion
@@ -75,14 +80,48 @@ namespace Nop.Plugin.Misc.FortNox
             //Settings
             _settingService.SaveSetting(new FortnoxSettings
             {
-                AuthorizationCode = ""
+                AuthorizationCode = "",
+                AccessToken = "",
+                ClientId = "",
+                ClientSecret = "",
+                DefaultPriceListCode = "",
+                TermsOfPayment = "", 
+                OnlyCompanyCustomer = false,
+                SalesAccountEUNotTaxed = "",
+                SalesAccountEUTaxed = "",
+                SalesAccountNonEU = "",
+                SalesAccountSweden = ""
+
             });
 
+            //database objects
+            _objectContext.Install();
+
             //install synchronization task
+            if (_scheduleTaskService.GetTaskByType(FortNoxDefaults.SynchronizationTask) == null)
+            {
+                _scheduleTaskService.InsertTask(new ScheduleTask
+                {
+                    Enabled = false,
+                    Seconds = FortNoxDefaults.DefaultSynchronizationPeriod * 60 * 60,
+                    Name = FortNoxDefaults.SynchronizationTaskName,
+                    Type = FortNoxDefaults.SynchronizationTask,
+                });
+            }
 
 
             //locales
             _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Misc.Fortnox.Fields.AuthorizationCode", "Authorization code");
+            _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Misc.Fortnox.Fields.ClientId", "Client Id");
+            _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Misc.Fortnox.Fields.AccessToken", "Access Token");
+            _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Misc.Fortnox.Fields.ClientSecret", "Client Secret");
+            _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Misc.Fortnox.Fields.OnlyCompanyCustomer", "Only Company Customer");
+            _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Misc.Fortnox.Fields.TermsOfPayment", "Terms Of Payment");
+            _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Misc.Fortnox.Fields.DefaultPriceListCode", "Default Price List Code");
+            _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Misc.Fortnox.Fields.SalesAccountSweden", "Sales Account Sweden");
+            _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Misc.Fortnox.Fields.SalesAccountEUTaxed", "Sales Account EUT axed");
+            _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Misc.Fortnox.Fields.SalesAccountEUNotTaxed", "Sales Account EU Not Taxed");
+            _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Misc.Fortnox.Fields.SalesAccountNonEU", "Sales Account Non EU");
             _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Misc.Fortnox.General", "General");
             _localizationService.AddOrUpdatePluginLocaleResource("Plugins.Misc.Fortnox.Instructions", @"
             <p>
@@ -99,8 +138,21 @@ namespace Nop.Plugin.Misc.FortNox
             //settings
             _settingService.DeleteSetting<FortnoxSettings>();
 
+            //database objects
+            _objectContext.Uninstall();
+
             //locales
             _localizationService.DeletePluginLocaleResource("Plugins.Misc.Fortnox.Fields.AuthorizationCode");
+            _localizationService.DeletePluginLocaleResource("Plugins.Misc.Fortnox.Fields.AccessToken");
+            _localizationService.DeletePluginLocaleResource("Plugins.Misc.Fortnox.Fields.ClientId");
+            _localizationService.DeletePluginLocaleResource("Plugins.Misc.Fortnox.Fields.ClientSecret");
+            _localizationService.DeletePluginLocaleResource("Plugins.Misc.Fortnox.Fields.OnlyCompanyCustomer");
+            _localizationService.DeletePluginLocaleResource("Plugins.Misc.Fortnox.Fields.TermsOfPayment");
+            _localizationService.DeletePluginLocaleResource("Plugins.Misc.Fortnox.Fields.DefaultPriceListCode");
+            _localizationService.DeletePluginLocaleResource("Plugins.Misc.Fortnox.Fields.SalesAccountSweden");
+            _localizationService.DeletePluginLocaleResource("Plugins.Misc.Fortnox.Fields.SalesAccountEUTaxed");
+            _localizationService.DeletePluginLocaleResource("Plugins.Misc.Fortnox.Fields.SalesAccountEUNotTaxed");
+            _localizationService.DeletePluginLocaleResource("Plugins.Misc.Fortnox.Fields.SalesAccountNonEU");
             _localizationService.DeletePluginLocaleResource("Plugins.Misc.Fortnox.General");
             _localizationService.DeletePluginLocaleResource("Plugins.Misc.Fortnox.Instructions");
 
